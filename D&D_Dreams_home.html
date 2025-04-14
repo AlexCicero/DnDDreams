@@ -1,0 +1,268 @@
+<html lang="en">
+
+<head>
+   
+    <meta charset="UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>D&D Dreams</title>
+   
+    <link rel="icon" type="image/png" href="logo_icon.png">
+   
+    <link href="D&D_Dreams.css" rel="stylesheet" />
+   
+    <script src="D&D_Dreams.js" defer></script> 
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="D&D_Dreams_home.html">
+        <img src="Logo_1000px.png" alt="Home" style="height: 80; width: 110%; vertical-align: middle;">   
+    <a href="D&D_Dreams_news.html">News</a>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="toggleDropdown('myDropdown')">Uploads</button>
+        <div class="dropdown-content" id="myDropdown">
+            <a href="D&D_Dreams_uploads_charaters.html">Characters</a>
+            <a href="D&D_Dreams_uploads_items.html">Items</a>
+            <a href="D&D_Dreams_uploads_worlds.html">Worlds</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="toggleDropdown('myDropdown2')">My Creations</button>
+        <div class="dropdown-content" id="myDropdown2">
+            <a href="D&D_Dreams_my_creations_charaters.html">Characters</a>
+            <a href="D&D_Dreams_uploads_items.html">Items</a>
+            <a href="D&D_Dreams_uploads_worlds.html">Worlds</a>
+        </div>
+    </div>
+</div>
+    <div class="img-container">
+        <div class="text-box">
+          <h1 class="centered">Welcome to D&D Dreams!</h1>
+          <h3 class="centered">Where your dreams can become reality!</h3>
+        </div>
+      </div>
+
+<div class="Custom-Box-Left">
+  <div class="text-content">
+    <h3 class="left">Find Custom Worlds</h3>
+    <p class="left">You can find custom worlds and characters created by real people just like you! Explore campaigns and <br> unique settings to combine with your D&D campaign and ensure your players have a wonderful time. <br> Click here and let your next campaign be expanded by our community!</p>
+  </div>
+  <a href="D&D_Dreams_my_creations_worlds.html" class="try-now-button">Enter Worlds!</a>
+</div>
+
+<div class="Custom-Box-Right">
+  <div class="text-content">
+    <h3 class="left">Create & Share Your Characters</h3>
+    <p class="left">Bring your own D&D visions to life! Craft in depth Charaters, or find some NPC in a frantic rush, <br> you can find and share with our community. <br> Start creating and inspire other dungeon masters today!</p>
+  </div>
+  <a href="D&D_Dreams_my_creations_charaters.html" class="try-now-button-right">Create Now!</a>
+</div>
+
+
+
+<style>
+/* Scrollbar Handling */
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; }
+body { -ms-overflow-style: none; }
+
+/* Body Styling */
+body {
+  padding-right: 20px;
+}
+
+/* Hero Image Section */
+.img-container {
+  position: relative;
+  height: 1000px;
+  width: 100%;
+  background-image: url('Home Page Image.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  margin: 10px 10px 60px 10px; /* Added bottom margin */
+  z-index: 1;
+}
+
+/* Text Box */
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 228, 225, 0.9);
+  padding: 40px 100px;
+  border-radius: 15px;
+  border: 3px solid #ffb6c1;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.765);
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Custom Boxes */
+.Custom-Box-Left {
+  display: flex;
+  align-items: center;
+  background-color: #690033;
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin: 40px auto 25px auto;
+  position: relative;
+  right: 400px;
+  max-width: 60%;
+}
+.Custom-Box-Right {
+  display: flex;
+  align-items: center;
+  background-color: #690033;
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin: 40px auto 25px auto;
+  position: relative;
+  left: 400px;
+  max-width: 60%;
+}
+
+
+/* Box Content */
+.text-content {
+  text-align: left;
+  font-size: 20px;
+  padding: 20px 30px;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+  border-radius: 15px;
+  flex-grow: 1;
+}
+
+/* Buttons */
+.try-now-button {
+  background-color: rgb(255, 183, 220);
+  color: #8b0000;
+  padding: 30px 40px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  margin: 20px;
+  font-size: 25px;
+  flex-shrink: 0;
+}
+.try-now-button-right {
+  background-color: rgb(255, 183, 220);
+  color: #8b0000;
+  padding: 30px 40px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  margin: 20px;
+  font-size: 25px;
+  flex-shrink: 0;
+  margin-right: auto; 
+  order: -1; 
+  margin-right: 20px; 
+
+}
+
+.try-now-button:hover {
+  background-color: rgb(255, 135, 135);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .shifted-right {
+    right: 0;
+    margin-right: 20px;
+    max-width: 90%;
+  }
+  
+  .Custom-Box {
+    max-width: 90%;
+    margin: 30px auto;
+  }
+  
+  .text-content {
+    font-size: 16px;
+    padding: 15px;
+  }
+  
+  .try-now-button {
+    padding: 20px 30px;
+    font-size: 20px;
+  }
+}
+
+/* Text Styling */
+.centered { 
+  margin: 0;
+  color: #8b0000;
+}
+
+.left {
+  color: rgb(255, 218, 237);
+}
+
+h1 {
+  font-size: 60px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+h3 {
+  font-size: 30px;
+  margin-top: 1rem;
+}
+</style>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.Custom-Box');
+    let lastScroll = window.scrollY;
+
+    // Stronger Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            entry.target.style.opacity = entry.isIntersecting ? '1' : '0';
+            entry.target.style.transform = entry.isIntersecting 
+                ? 'translateY(0)' 
+                : 'translateY(30px)';
+        });
+    }, { threshold: 0.25 });
+
+    boxes.forEach(box => {
+        box.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        observer.observe(box);
+    });
+
+    // Simplified scroll handler
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        boxes.forEach(box => {
+            const boxTop = box.getBoundingClientRect().top;
+            box.style.opacity = (boxTop < window.innerHeight * 0.75) ? '1' : '1';
+        });
+        lastScroll = currentScroll;
+    });
+});
+
+  // Check if scrollbar is visible
+function hasScrollbar() {
+  return document.body.scrollHeight > window.innerHeight;
+}
+
+// Adjust padding dynamically
+function adjustPadding() {
+  document.body.style.paddingRight = hasScrollbar() ? '20px' : '0';
+}
+
+// Run on load and resize
+window.addEventListener('load', adjustPadding);
+window.addEventListener('resize', adjustPadding);
+  </script>
+</body>
+
+
+
+</html>

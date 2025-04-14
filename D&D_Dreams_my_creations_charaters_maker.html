@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Character - D&D Dreams</title>
+    <link rel="icon" type="image/png" href="logo_icon.png">
+    <link href="D&D_Dreams.css" rel="stylesheet" />
+    <script src="D&D_Dreams.js" defer></script>
+    <script src="D&D_Dreams_my_creations_charaters_maker.js" defer></script>
+</head>
+
+<body >
+    <div class="navbar">
+        <a href="D&D_Dreams_home.html">
+            <img src="Logo_1000px.png" alt="Home" style="height: 80px; vertical-align: middle;">
+        </a>
+        <a href="D&D_Dreams_news.html">News</a>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown('myDropdown')">Uploads</button>
+            <div class="dropdown-content" id="myDropdown">
+                <a href="D&D_Dreams_uploads_charaters.html">Characters</a>
+                <a href="D&D_Dreams_uploads_items.html">Items</a>
+                <a href="D&D_Dreams_uploads_worlds.html">Worlds</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown('myDropdown2')">My Creations</button>
+            <div class="dropdown-content" id="myDropdown2">
+                <a href="D&D_Dreams_my_creations_charaters.html">Characters</a>
+                <a href="D&D_Dreams_uploads_items.html">Items</a>
+                <a href="D&D_Dreams_uploads_worlds.html">Worlds</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Create Your Character</h1>
+    <form id="character-form">
+        <input class= "CN" type="text" id="characterName" placeholder="Character Name" required />
+        <input class= "CN" type="text" id="characterClass" placeholder="Character Class" required />
+        <input class= "CN" type="number" min="0" id="characterLevel" placeholder="Character Level" required />
+        <button class="button" type="submit">Save Character</button>
+    </form>
+
+<!-- Save Confirmation Modal -->
+<div id="saveModal" class="modal">
+    <div class="modal-content">
+        <h2>Save Character</h2>
+        <p>Are you sure you want to save this character?</p>
+        <button class="save" id="confirmSave">Yes, Save</button>
+        <button class="save" id="cancelSave">Cancel</button>
+    </div>
+</div>
+
+<!-- Save Success Modal -->
+<div id="saveSuccessModal" class="modal">
+    <div class="modal-content">
+        <h2>Success!</h2>
+        <p>Character saved successfully!</p>
+        <button class="save" id="closeSuccess">OK</button>
+    </div>
+</div>
+
+<style>
+
+h1 {
+    color:rgb(255, 218, 237);
+}
+
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color:rgb(255, 218, 237);
+        padding: 20px;
+        text-align: center;
+        margin: 15% auto;
+        width: 300px;
+        border-radius: 10px;    
+    }
+
+   
+   
+   .save{ 
+
+border: none;
+  color: rgb(255, 218, 237);
+  padding: 4px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  background-color: rgb(255, 140, 200);
+  color: black;
+  border-radius: 5px;
+
+}
+   
+   .CN {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 4px 2px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(255, 218, 237);
+    border: 2px solid rgb(243, 164, 205);
+    border-radius: 5px;
+    color: black;
+}
+    .button {
+      border: none;
+      color: rgb(255, 218, 237);
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    
+    .button {
+      background-color: rgb(255, 218, 237);
+      color: black;
+      border: 2px solid rgb(243, 164, 205);
+      border-radius: 5px;
+    }
+    
+    .button:hover {
+      background-color: rgb(145, 54, 86);
+      color: white;
+    }
+</style>
+
+
+
+</body>
+
+</html>
