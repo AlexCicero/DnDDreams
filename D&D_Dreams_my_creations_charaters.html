@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character List - D&D Dreams</title>
+    <link rel="icon" type="image/png" href="logo_icon.png">
+    <link href="D&D_Dreams.css" rel="stylesheet" />
+    <script src="D&D_Dreams.js" defer></script>
+    <script src="D&D_Dreams_my_creations_charaters_list.js" defer></script>
+    <script src="Upload.js" defer></script>
+
+</head>
+
+<body>
+  <div class="navbar">
+
+    <a href="index.html">
+        <img src="Logo_1000px.png" alt="Home" class="left-i";> 
+    </a>
+
+    <a href="D&D_Dreams_news.html" class="left-d" >News</a>
+ 
+
+
+    <a href="D&D_Dreams_uploads.html" class="left-d" >Upload</a>
+
+
+
+    <div class="dropdown">
+      
+        <button class="dropbtn" onclick="toggleDropdown('myDropdown2')">My Creations</button>
+
+        <div class="dropdown-content" id="myDropdown2">
+
+            <a href="D&D_Dreams_my_creations_charaters.html">Characters</a> <br>
+            <br>
+            <a href="D&D_Dreams_my_creations_items.html">Items</a> <br>
+            <br>
+            <a href="D&D_Dreams_my_creations_worlds.html">Worlds</a> <br>
+            <br>
+
+
+        </div>
+        <a href="login.html" class="right-d">Login</a>
+    </div>
+
+</div>
+    <div class="container">
+        <h1 class="centered">Your Characters</h1>
+        <h3 class="centered">Manage Your D&D Characters</h3>
+    <input type="button" class="button button1" value="Add Character" onclick="newDoc()">
+        <table class="character-table" id="character-table">
+            <thead>
+                <tr>
+                    <th>Character Name</th>
+                    <th>Class</th>
+                    <th>Level</th>
+                </tr>
+            </thead>
+            <tbody id="character-list">
+              <div id="deleteModal" style="display: none;">
+                <div class="modal-content">
+                  <p class="DeleteC">Delete character: <span id="deleteCharacterName"></span>?</p>
+                  <button class= "button" id="confirmDelete">Yes, Delete</button>
+                  <button class="button" id="cancelDelete">Cancel</button>
+                </div>
+              </div>
+              
+              <div class="context-menu" id="contextMenu">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+                <button onclick="uploadCharacter()">Upload</button>
+              </div>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<script>
+    function newDoc() {
+      window.location.assign("D&D_Dreams_my_creations_charaters_maker.html")
+    }
+</script>
+
+<style>
+
+.centered{
+color: rgb(255, 218, 237);   
+
+}
+.character-table {
+
+  width: 80%;
+  text-align: center;
+  border-bottom: 1px solid #cf013b98;
+
+}
+tr:hover {background-color: rgb(143, 1, 86);}
+
+th {
+  background-color: #840037;
+  cursor: pointer;
+  transition: 0.3s;
+  color: rgb(255, 218, 237);     
+}
+
+tr {
+  cursor: pointer;
+  transition: 0.3s;
+  color: rgb(255, 218, 237);
+}    
+.edit-btn, .delete-btn {
+    display: none ;
+    padding: 8px;
+    min-width: 60px;
+}
+
+tr.active .edit-btn,
+tr.active .delete-btn {
+    display: inline-block 
+}
+
+    .button {
+      border: none;
+      color: rgb(255, 218, 237);
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    
+    .button {
+      background-color: rgb(255, 218, 237);
+      color: black;
+      border: 2px solid rgb(243, 164, 205);
+      border-radius: 5px;
+    }
+    
+    .button:hover {
+      background-color: rgb(145, 54, 86);
+      color: white;
+    }
+
+    .edit{
+      background-color: rgb(255, 218, 237);
+      color: rgb(7, 173, 148);
+      border: 2px solid rgb(243, 164, 205);
+      border-radius: 5px;
+      font-weight: bold;
+
+    }
+    
+    .edit:hover {
+      background-color: rgb(145, 54, 86);
+      color: white;
+    }
+
+    .delete{
+      background-color: rgb(255, 218, 237);
+      color:  rgb(177, 0, 0);
+      border: 2px solid rgb(243, 164, 180);
+      border-radius: 5px;
+      font-weight: bold;
+
+    }
+    
+    .delete:hover {
+      background-color: rgb(145, 54, 54);
+      color: white;
+    }
+         /* Add these new styles */
+      .context-menu {
+            position: fixed;
+            background: rgb(255, 218, 237);
+            border: 2px solid rgb(243, 164, 205);
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .context-menu button {
+            display: block;
+            width: 100%;
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            color: #b1004a;
+            font-weight: bold;
+        }
+        
+        .context-menu button:hover {
+            background-color: rgb(145, 54, 86);
+            color: white;
+        }
+
+
+
+        .character-table {
+            width: 80%;
+            text-align: center;
+            border-bottom: 1px solid #cf013b98;
+        }
+    </style>
+</html>
