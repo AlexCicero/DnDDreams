@@ -1,0 +1,793 @@
+<html lang="en">
+
+<head>
+   
+    <meta charset="UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>D&D Dreams</title>
+   
+    <link rel="icon" type="image/png" href="logo_icon.png">
+   
+    <link href="D&D_Dreams.css" rel="stylesheet" />
+   
+    <script src="D&D_Dreams.js" defer></script> 
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <div class="navbar">
+
+        <a href="index.html">
+            <img src="Logo_1000px.png" alt="Home" class="left-i";> 
+        </a>
+    
+        <a href="D&D_Dreams_news.html" class="left-d" >News</a>
+     
+    
+    
+        <a href="D&D_Dreams_uploads.html" class="left-d" >Upload</a>
+    
+    
+    
+        <div class="dropdown">
+          
+            <button class="dropbtn" onclick="toggleDropdown('myDropdown2')">My Creations</button>
+    
+            <div class="dropdown-content" id="myDropdown2">
+    
+            <a href="D&D_Dreams_my_creations_charaters-list.html">Characters</a> <br>
+                <br>
+                <a href="D&D_Dreams_my_creations_items.html">Items</a> <br>
+                <br>
+                <a href="D&D_Dreams_my_creations_worlds.html">Worlds</a> <br>
+                <br>
+    
+    
+            </div>
+            <a href="login.html" class="right-d">Login</a>
+        </div>
+    
+    </div>
+
+
+    <!-- Save Button -->
+    <button class="save-button" id="BOCS" onclick="openSavePopup()">Save Character</button>
+
+
+    <div id="savePopup" style="display: none; position: fixed; z-index: 1000; background: rgba(0,0,0,0.8); top: 0; left: 0; width: 100%; height: 100%; justify-content: center; align-items: center;">
+        <div style="background: pink; padding: 30px; border-radius: 20px; text-align: center;">
+          <p>Are you sure you want to save this character?</p>
+          <button id="confirmSaveBtn">Yes, Save</button>
+          <button id="cancelSaveBtn">No</button>
+        </div>
+      </div>
+      
+  
+
+
+   <!-- ------------------- Big boys ------------------- -->
+<div class="input-wrapper">
+        <input type="text" id="character-name" class="input-group-CN">
+        <label class="custom-placeholder-CN" for="character-name">Character Name</label>
+</div>
+
+<div class="input-wrapper">
+    <input type="text" id="player-name" class="input-group-PN">
+    <label class="custom-placeholder-PN" for="layer-name">Player Name</label>
+</div>
+
+<!-- ------------------- small boys ------------------- -->
+
+
+
+<!-- ------------ left ------------- -->
+
+    <div class="input-wrapper">
+        <input type="text" id="class-level" class="input-group-CL">
+        <label class="custom-placeholder-CL" for="class-level">Class & Level</label>
+    </div>
+
+    <div class="input-wrapper">
+        <input type="text" id="sub-class" class="input-group-SB">
+        <label class="custom-placeholder-SB" for="sub-class">Sub-Class</label>
+    </div>
+
+    <div class="input-wrapper">
+        <input type="text" id="experience-poits" class="input-group-EP">
+        <label class="custom-placeholder-EP" for="experience-poits">Experience Points</label>
+    </div>
+
+<!-- ------------ right ------------- -->
+
+    
+    <div class="input-wrapper">
+        <input type="text" id="race" class="input-group-R">
+        <label class="custom-placeholder-R" for="race">Race</label>
+    </div>
+    
+    <div class="input-wrapper">
+        <input type="text" id="background" class="input-group-B">
+        <label class="custom-placeholder-B" for="background">Background</label>
+    </div>
+    
+    <div class="input-wrapper">
+        <input type="text" id="alignment" class="input-group-A">
+        <label class="custom-placeholder-A" for="alignment">Alignment</label>
+    </div>
+
+    <div class="input-wrapper"></div>
+    <div class="input-wrapper"></div>
+<!-- ------------ Center ------------- -->
+
+
+    <input class="bottom-circle-S" id="BOCS">
+    <input class="base-circle-S" id="BACS">
+    <input class="top-circle-S" >
+    <label class="custom-placeholder-BOCS" for="BOCS">Save</label>
+    <label class="custom-placeholder-BACS" for="BACS">Strength</label>
+
+<style>
+
+
+/* Top-left Save Button */
+.save-button {
+position: absolute;
+height: 60px;
+width: 225px;
+border-radius: 10px;
+padding: 10px;
+border: 4px outset #d85194;
+background-color: #fff0f5;
+font-family: 'Cinzel Decorative', serif;
+font-weight: bold; /* or 700, or 900 for black */
+font-size: 20px;
+cursor: pointer;
+z-index: 10;
+left: 30px;
+top: 150px;
+}
+
+.save-button:hover {
+  background-color: #e0558f;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Popup Box */
+.popup-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+  color: #8b0000;
+  font-size: 20px;
+}
+
+.popup-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #f06aa1;
+  color: white;
+}
+
+.popup-buttons button:hover {
+  background-color: #e0558f;
+}
+
+
+
+
+/* ------------ Center -------------*/
+
+
+.base-circle-S,
+.bottom-circle-S,
+.top-circle-S {
+  position: fixed;
+  border-radius: 50%;
+}
+
+
+.bottom-circle-S {  
+  width: 80px;
+  height: 80px;
+  top: 430px;
+  left: 360px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+  font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 45px;
+    font-size: 20px;
+}
+
+
+.base-circle-S {   
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at center, #ffc1e3, #f06aa1);
+  z-index: 2;
+  top: 460px;
+  left: 300px;
+  font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 30px;
+    padding-bottom: 20px;
+    font-size: 35px;
+}
+
+.top-circle-S {
+  width: 70px;
+  height: 70px;
+  top: 535px;
+  left:315px;
+  background: #fff0f6;
+  border: 2px solid #f06aa1;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c2185b;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 20px;
+    font-size: 23px;
+}
+
+
+/* ------------------------------ font ------------------------------ */
+
+
+   .cinzel-decorative-regular {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cinzel-decorative-bold {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.cinzel-decorative-black {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* ------------ Wrap (no clue what this does ¯\_(ツ)_/¯) --------- */
+
+.input-wrapper {
+    position: fixed;
+    display: inline-block;
+    z-index: 2;
+}
+
+.input-wrapper::before,
+.input-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background-color: #ff69b4;
+    border: 2px outset #c94070;
+    z-index: 1;
+}
+
+input {
+    position: relative;
+    z-index: 3;
+}
+
+
+
+
+/* ------------------------------ Boxes ------------------------------ */
+
+/* ------------------- Big boys -------------------*/
+
+.input-group-CN, .input-group-PN {
+    height: 70px;
+    padding: 10px;
+    position: fixed;
+    margin-bottom: 15px;
+    border: 4px outset #d85194;
+    background-color: #fff0f5;
+    clip-path: polygon(0 0,100% 0,100% calc(50% - var(--b)/2),calc(100% - var(--h)) 50%,100% calc(50% + var(--b)/2),100% 100%,0 100%,0 calc(50% + var(--b)/2),var(--h) 50%,0 calc(50% - var(--b)/2));
+    --h: 24px;
+    --b: 47px;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 20px;
+    font-size: 20px;
+
+    }
+
+    
+
+
+.input-group-CN{
+    left: 700px;  
+    top: 185px;
+    width: 450px;
+
+}
+
+.input-group-PN{
+    left: 737.5px;  
+    top: 315px;
+    width: 375px;
+
+}
+/*------------------- small boys ------------------- */
+
+    .input-group-CL, 
+    .input-group-SB, 
+    .input-group-EP,
+    .input-group-R,
+    .input-group-B, 
+    .input-group-A  {
+    /* Existing styles */
+    position: fixed;
+    margin-bottom: 15px;
+    border: 2px solid #ff69b4; /* Inner pink border */
+    background-color: #fff0f5;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    width: 300px;
+    padding: 10px;
+    font-size: 15px;
+    box-shadow: 
+        0 0 0 2px #913656, /* Outer dark border */
+        inset 0 0 0 2px #fff0f5; /* Inner gap color */
+    }
+
+
+
+    
+
+/*------------- left ------------- */
+
+
+.input-group-CL, 
+.input-group-SB, 
+.input-group-EP {
+    clip-path: polygon(
+        0% 0%, calc(100% - 10px) 0%, 100% 10px,
+        100% 100%, 10px 100%, 0% calc(100% - 10px)
+    );
+
+}
+
+.input-group-R,
+.input-group-B, 
+.input-group-A {
+    clip-path: polygon(
+        10px 0%, 100% 0%, 100% calc(100% - 10px), 
+        calc(100% - 10px) 100%, 0% 100%, 0% 10px
+    );
+
+}
+
+.input-group-CL {
+    left: 350px;
+    top: 200px;
+}
+
+.input-group-SB {
+    left: 350px;  
+    top: 280px;
+
+}
+
+.input-group-EP {
+    left: 350px;  
+    top: 360px;
+
+}
+
+/*------------- right ------------- */
+
+.input-group-R {
+    left: 1200px;
+    top: 200px;
+}
+
+.input-group-B {
+    left: 1200px;
+    top: 280px;
+
+}
+
+.input-group-A {
+    left: 1200px;
+    top: 360px;
+
+}
+
+/* ------------------------------ Diamond indents for CN input ------------------------------ */
+.input-wrapper:nth-child(6)::before,
+.input-wrapper:nth-child(6)::after,
+.input-wrapper:nth-child(11)::before,
+.input-wrapper:nth-child(11)::after
+{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 25px;
+    height: 25px;
+
+    background-color: #ff69b4;
+    border: 4px outset #c94070;
+}
+
+.input-wrapper:nth-child(3)::before,
+.input-wrapper:nth-child(3)::after, 
+.input-wrapper:nth-child(4)::before,
+.input-wrapper:nth-child(4)::after,
+.input-wrapper:nth-child(5)::before,
+.input-wrapper:nth-child(5)::after,
+.input-wrapper:nth-child(7)::before,
+.input-wrapper:nth-child(7)::after, 
+.input-wrapper:nth-child(8)::before,
+.input-wrapper:nth-child(8)::after,
+.input-wrapper:nth-child(9)::before,
+.input-wrapper:nth-child(9)::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    background-color: #ff69b4;
+    border: 2px outset #c94070;
+
+}
+
+
+.input-wrapper:nth-child(10)::before {
+    content: '';
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    border: 2px outset #c94070;
+}
+
+
+/* ------------------- Center-------------------*/
+
+
+
+.input-wrapper:nth-child(10)::before {
+  background-color:  #ff88c3;; 
+  transition: background-color 0.3s ease;
+    left: 360px;  /* CN left */
+    top: 440px;  
+}
+
+.input-wrapper.active:nth-child(10)::before{
+  background-color: #ff3c9e; /* darker pink when clicked */
+  left: 270px;  /* CN left */
+  top: 380px;  
+}
+/* ------------------- Big boys -------------------*/
+
+
+
+.input-wrapper:nth-child(11)::before {
+    left: 683px;  /* CN left */
+    top: 100px;  
+}
+
+.input-wrapper:nth-child(11)::after {
+    left: 1133px;  /* CN right*/
+    top: 100px;   
+}
+
+
+.input-wrapper:nth-child(6)::before {
+    left: 720px;  /* CN left */
+    top: 229px;  
+
+}
+
+.input-wrapper:nth-child(6)::after {
+    left: 1097px;  /* CN right*/
+    top: 229px; 
+}
+/*------------------- small boys ------------------- */
+
+
+/*------------- left ------------- */
+
+
+.input-wrapper:nth-child(3)::before {
+    left: 323px;  /* CL Bottom left */
+    top: 125px;  
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(3)::after {
+    left: 643px;  /* Cl top right */
+    top: 80px;   
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(4)::before {
+    left: 343px;  /* SP Bottom left */
+    top: 205px;  
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(4)::after {
+    left: 643px;  /* SP top right */
+    top: 160px;   
+    width: 10px;
+    height: 10px;
+}
+.input-wrapper:nth-child(5)::before {
+    left: 343px;  /* EP Bottom left */
+    top: 285px;  
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(5)::after {
+    left: 643px;  /* EP top right */
+    top: 240px;   
+    width: 10px;
+    height: 10px;
+}
+
+
+/*------------- right ------------- */
+
+
+.input-wrapper:nth-child(7)::before {
+    left: 1493px;  /* R Bottom right */
+    top: 124px;  
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(7)::after {
+    left: 1193px;  /* R top left */
+    top: 80px;   
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(8)::before {
+    left: 1493px; /* B Bottom right */
+    top: 204px;  
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(8)::after {
+    left: 1193px;  /* B top left */
+    top: 160px;   
+    width: 10px;
+    height: 10px;
+}
+.input-wrapper:nth-child(9)::before {
+    left: 1493px; /* A Bottom right */   
+    top: 284px;  
+    width: 10px;
+    height: 10px;
+}
+
+.input-wrapper:nth-child(9)::after {
+    left: 1193px;   /* A top left */
+    top: 240px;   
+    width: 10px;
+    height: 10px;
+}
+
+/* ------------------------------ Labels positioning ------------------------------ */
+
+/* ------------------- Big boys -------------------*/
+
+.custom-placeholder-CN, .custom-placeholder-PN  {
+    position: fixed;
+    color: rgb(255, 218, 237);
+    font-family: 'Cinzel Decorative', bold;
+    pointer-events: none;
+    font-size: 32px;
+}
+
+
+.custom-placeholder-CN {
+    left: 770px;
+    top: 260px;
+}
+
+.custom-placeholder-PN {
+    left: 820px;
+    top: 390px;
+}
+
+/*------------------- small boys ------------------- */
+
+.custom-placeholder-CL,
+.custom-placeholder-SB,
+.custom-placeholder-EP,
+.custom-placeholder-R,
+.custom-placeholder-B,
+.custom-placeholder-A {
+    position: fixed;
+    color: rgb(255, 218, 237);
+    font-family: 'Cinzel Decorative';
+    pointer-events: none;
+    font-size: 18;
+}
+
+.custom-placeholder-BOCS
+{
+    position: fixed;
+    color: rgb(255, 255, 255);
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    pointer-events: none;
+    font-size: 14;
+}
+.custom-placeholder-BACS {
+    position: fixed;
+    color: rgb(0, 0, 0);
+    pointer-events: none;
+    font-size: 14;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+}
+
+/*------------- left ------------- */
+
+
+.custom-placeholder-CL {
+    left: 500px;
+    top: 245px;
+}
+
+.custom-placeholder-SB {
+    left: 530px;
+    top: 325px;
+}
+
+.custom-placeholder-EP {
+    left: 460px;
+    top: 405px;
+}
+
+/*------------- right ------------- */
+
+
+.custom-placeholder-R {
+    left: 1220px;
+    top: 245px;
+}
+
+.custom-placeholder-B {
+    left: 1220px;
+    top: 325px;
+}
+
+.custom-placeholder-A {
+    left: 1220px;
+    top: 405px;
+}
+
+/*------------- center ------------- */
+
+.custom-placeholder-BOCS {
+    left: 390px;
+    top: 415px;
+    z-index: 10;
+}
+
+.custom-placeholder-BACS {
+    left: 310Px;
+    top: 519px;
+    z-index: 3;
+}
+</style>
+
+<script>
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load character if editing
+      const editChar = JSON.parse(localStorage.getItem("editCharacter"));
+      if (editChar) {
+        document.getElementById("player-name").value = editChar.playerName;
+        document.getElementById("character-name").value = editChar.characterName;
+        document.getElementById("class-level").value = editChar.classLevel;
+        document.getElementById("sub-class").value = editChar.subClass;
+        document.getElementById("experience-poits").value = editChar.xp;
+        document.getElementById("race").value = editChar.race;
+        document.getElementById("background").value = editChar.background;
+        document.getElementById("alignment").value = editChar.alignment;
+      }
+  
+      // Save confirmation
+      document.getElementById("confirmSaveBtn").addEventListener("click", function () {
+        const character = {
+          playerName: document.getElementById("player-name").value,
+          characterName: document.getElementById("character-name").value,
+          classLevel: document.getElementById("class-level").value,
+          subClass: document.getElementById("sub-class").value,
+          xp: document.getElementById("experience-poits").value,
+          race: document.getElementById("race").value,
+          background: document.getElementById("background").value,
+          alignment: document.getElementById("alignment").value,
+          charClass: document.getElementById("class-level").value.split(" ")[0]
+        };
+  
+        let characters = JSON.parse(localStorage.getItem("ddCharacters") || "[]");
+  
+        const editChar = JSON.parse(localStorage.getItem("editCharacter"));
+        if (editChar) {
+          const index = characters.findIndex(c => c.characterName === editChar.characterName);
+          if (index !== -1) {
+            characters[index] = character;
+          } else {
+            characters.push(character);
+          }
+          localStorage.removeItem("editCharacter");
+        } else {
+          characters.push(character);
+        }
+  
+        localStorage.setItem("ddCharacters", JSON.stringify(characters));
+        window.location.href = "D&D_Dreams_my_creations_charaters-list.html";
+      });
+  
+      document.getElementById("cancelSaveBtn").addEventListener("click", function () {
+        document.getElementById("savePopup").style.display = "none";
+      });
+    });
+  
+    function openSavePopup() {
+      document.getElementById("savePopup").style.display = "flex";
+    }
+  </script>
+  
+  
+</body>
+
+</html>

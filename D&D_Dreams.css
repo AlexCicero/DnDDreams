@@ -1,0 +1,138 @@
+html, body {
+
+margin: 0px;
+padding: 0px;
+background-color: #690033;
+
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+
+}
+
+.DeleteC{
+
+    color:rgb(255, 81, 87);
+    font-weight: 4px;
+}
+
+
+.navbar {
+    overflow: visible;
+    background-image: linear-gradient(to bottom, #69003300, #69003300, #69003300, #690033), url('Banner.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    width: 98.2%; 
+    font-size: 25px;    
+    align-items: center; 
+    padding-right: calc(17px + 1rem); /* 17px scrollbar comp + your original padding */
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: 120px; /* Match your banner's natural height */
+
+    
+
+
+}
+
+.left-i{
+    float: left;
+    height: 110px; 
+    position: relative;
+    top: 10px;
+    left: 20px
+
+}
+
+.left-d{
+    float: left;
+    display: block;
+    color: rgb(255, 183, 220);
+    text-align: left;
+    padding: 16px 16px;
+    text-decoration: none;
+    margin: 0 5px;
+    line-height: 60px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.right-d {
+    float: right;
+    display: block;
+    color: rgb(255, 183, 220);
+    text-align: right;
+    padding: 16px 16px;
+    text-decoration: none;
+    margin: 0 5px;
+    line-height: 60px;
+    position: fixed;
+    right: 90px;
+    top: 10px;
+}
+
+.dropdown {
+    float: left;
+    overflow: visible;
+    position: relative;
+    top: 12px;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 25px;     
+    border: none;
+    outline: none;
+    color: rgb(255, 183, 220);
+    padding: 14px 16px;
+    background-color: inherit;
+    line-height: 60px;
+    text-align: left;
+
+}
+.dropdown-content {
+    display: none; 
+    background-color: #ffb7c566;
+    width: 135px;
+    height: 140px;
+    border: 2px solid rgb(243, 164, 205);
+    border-radius: 5px;
+    font-size: 17px;     
+    box-shadow: /*right --> */ 8px /* down -->*/ 8px /* blur --> */ 14px /* size --> */ 5px rgba(19, 0, 64, 0.481);
+    z-index: 1;
+    position: fixed;
+    left: 340px;
+    top: 85px;
+    text-align: center;
+    font-size: 17px;     
+
+}
+
+.dropdown-content a {
+    color: rgb(255, 183, 220);
+    text-decoration: none;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 17px;     
+    line-height: 20px;
+    position: relative;
+    top: 20px;
+}
+
+.dropdown-content a:hover {
+    float: center;
+    background-color: #690033c2;
+    border: 2px solid rgb(243, 164, 205);
+    border-radius: 5px;
+    width: 100px;
+    height: 60px;
+}
+
+.show {
+    display: block; /* Show the dropdown */
+}

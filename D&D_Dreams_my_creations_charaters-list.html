@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character List - D&D Dreams</title>
+    <link rel="icon" type="image/png" href="logo_icon.png">
+    <link href="D&D_Dreams.css" rel="stylesheet" />
+    <script src="D&D_Dreams.js" defer></script>
+    <script src="D&D_Dreams_my_creations_charaters_list.js" defer></script>
+    <script src="Upload.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="navbar">
+
+    <a href="index.html">
+        <img src="Logo_1000px.png" alt="Home" class="left-i";> 
+    </a>
+
+    <a href="D&D_Dreams_news.html" class="left-d" >News</a>
+ 
+
+
+    <a href="D&D_Dreams_uploads.html" class="left-d" >Upload</a>
+
+
+
+    <div class="dropdown">
+      
+        <button class="dropbtn" onclick="toggleDropdown('myDropdown2')">My Creations</button>
+
+        <div class="dropdown-content" id="myDropdown2">
+
+            <a href="D&D_Dreams_my_creations_charaters-list.html">Characters</a> <br>
+            <br>
+            <a href="D&D_Dreams_my_creations_items.html">Items</a> <br>
+            <br>
+            <a href="D&D_Dreams_my_creations_worlds.html">Worlds</a> <br>
+            <br>
+
+
+        </div>
+        <a href="login.html" class="right-d">Login</a>
+    </div>
+
+</div>
+
+<body>
+    <h1 class="Head">My Character List</h1>
+  
+    <div class="button-wrapper">
+    <button class="CNC" onclick="window.location.href='D&D_Dreams_my_creations_charaters_maker.html'">  Create New Character </button>
+  </div>>
+
+  <table id="characterTable">
+    <thead>
+      <tr>
+        <th>Player Name</th>
+        <th>Character Name</th>
+        <th>Class & Level</th>
+        <th>Race</th>
+        <th>Main Class</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+  </table>
+  
+  
+    <ul id="actionMenu" style="display: none; position: absolute; background-color: white; z-index: 999; border: 1px solid #ccc; border-radius: 8px; padding: 0;">
+        <li onclick="editCharacter()" style="padding: 10px; cursor: pointer;">Edit</li>
+        <li onclick="confirmDelete()" style="padding: 10px; cursor: pointer;">Delete</li>
+      </ul>
+      
+  
+      <div id="deletePopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: white; padding: 20px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3); z-index: 1000;">
+      <p>Are you sure you want to delete this character?</p>
+      <button onclick="deleteCharacter(true)">Yes</button>
+      <button onclick="deleteCharacter(false)">No</button>
+    </div>
+    >
+
+
+
+<style>
+
+#characterTable tbody tr {
+  cursor: pointer;
+}
+
+#characterTable tbody tr:hover {
+  background-color: #ff4f98;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#characterTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#characterTable th {
+  background-color: #81003e;
+  color: #ff8dbc;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ff8dbc;
+}
+
+#characterTable td {
+  padding: 12px;
+  border-bottom: 1px solid #ff8dbc;
+}
+
+#characterTable th,
+#characterTable td {
+  pointer-events: auto;
+}
+
+
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+
+.CNC {
+  background-color: #f06aa1;
+  color: rgb(129, 9, 71);
+  padding: 30px, 30px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 20px;
+  height: 40px;
+  width: 300px;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: bold; 
+
+}
+
+
+    .CNC:hover {
+        background-color:  #ec468b;
+    }
+    .Head {
+        text-align:center;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: bold; 
+      color:  rgb(255, 183, 220);
+    }
+
+
+    table {
+      margin: 50px auto;
+      font-family: 'Cinzel Decorative', serif;
+      border-collapse: collapse;
+      width: 80%;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 2px solid #f06aa1;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: bold; 
+      color: rgb(255, 183, 220);
+    }
+    .action-menu {
+      position: absolute;
+      background: #fff0f6;
+      border: 2px solid #f06aa1;
+      padding: 8px;
+      border-radius: 10px;
+      font-family: 'Cinzel Decorative', serif;
+      display: none;
+      z-index: 1000;
+    }
+    .action-menu button {
+      background: none;
+      border: none;
+      color: #c2185b;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+      padding: 4px 0;
+    }
+    .popup {
+      position: fixed;
+      top: 30%;
+      left: 40%;
+      background-color: #fff0f6;
+      border: 4px outset #d85194;
+      padding: 20px;
+      border-radius: 15px;
+      font-family: 'Cinzel Decorative', serif;
+      display: none;
+      z-index: 2000;
+    }
+  </style>
+
+<script>
+    const tableBody = document.querySelector("#characterTable tbody");
+    const actionMenu = document.getElementById("actionMenu");
+    const deletePopup = document.getElementById("deletePopup");
+    let selectedCharacterIndex = null;
+  
+    const characters = JSON.parse(localStorage.getItem("ddCharacters") || "[]");
+  
+    characters.forEach((char, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${char.playerName}</td>
+        <td>${char.characterName}</td>
+        <td>${char.classLevel}</td>
+        <td>${char.race}</td>
+        <td>${char.charClass}</td>
+      `;
+  
+      // Save the index when right-clicking
+      row.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        selectedCharacterIndex = index;
+        actionMenu.style.display = "block";
+        actionMenu.style.left = `${e.pageX}px`;
+        actionMenu.style.top = `${e.pageY}px`;
+      });
+  
+      tableBody.appendChild(row); // ← THIS was missing
+    });
+  
+    // Close menu when clicking anywhere else
+    document.addEventListener("click", () => {
+      actionMenu.style.display = "none";
+    });
+  
+    // Edit function
+    function editCharacter() {
+      const character = characters[selectedCharacterIndex];
+      localStorage.setItem("editCharacter", JSON.stringify(character));
+      window.location.href = "D&D_Dreams_my_creations_charaters_maker.html";
+    }
+  
+    // Open delete confirmation popup
+    function confirmDelete() {
+      deletePopup.style.display = "block";
+    }
+  
+    // Handle delete confirmation
+    function deleteCharacter(confirm) {
+      deletePopup.style.display = "none";
+      if (confirm) {
+        characters.splice(selectedCharacterIndex, 1);
+        localStorage.setItem("ddCharacters", JSON.stringify(characters));
+        location.reload();
+      }
+    }
+  </script>
+  
+  
+</body>
+
+</html>
