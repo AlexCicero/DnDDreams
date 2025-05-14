@@ -74,14 +74,13 @@
   </table>
   
   
-    <ul id="actionMenu" style="display: none; position: absolute; background-color: white; z-index: 999; border: 1px solid #ccc; border-radius: 8px; padding: 0;">
-        <li onclick="editCharacter()" style="padding: 10px; cursor: pointer;">Edit</li>
-        <li onclick="confirmDelete()" style="padding: 10px; cursor: pointer;">Delete</li>
-      </ul>
+    <div id="actionMenu" class="actionMenu">
+        <li onclick="editCharacter()" class="edit">Edit</li>
+        <li onclick="confirmDelete()" class="delete">Delete</li>
+    </div>
       
   
-      <div id="deletePopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      background: white; padding: 20px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3); z-index: 1000;">
+      <div id="deletePopup" class="deletePopup">
       <p>Are you sure you want to delete this character?</p>
       <button onclick="deleteCharacter(true)">Yes</button>
       <button onclick="deleteCharacter(false)">No</button>
@@ -91,6 +90,54 @@
 
 
 <style>
+
+.actionMenu{
+display: none; 
+position: absolute; 
+background-color: rgb(255, 183, 220);
+z-index: 9; 
+border: 4px outset #b8004d;
+border-radius: 10px; 
+padding: 0;
+font-family: 'Cinzel Decorative', serif;
+  font-weight: bold; 
+  color: #490023;
+
+}
+
+.edit, 
+.delete {
+  padding: 10px; 
+  cursor: pointer;
+}
+
+.deletePopup{
+  display: none; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  background: rgb(255, 183, 220);
+  padding: 20px; 
+  border-radius: 12px; 
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.3); 
+  z-index: 10;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: bold; 
+  color: #490023;
+
+}
+
+
+.delete:hover {
+  background-color:  rgb(255, 144, 201);
+  border-radius: 10px; 
+}
+
+.edit:hover {
+  background-color:  rgb(255, 144, 201);
+  border-radius: 10px; 
+}
 
 #characterTable tbody tr {
   cursor: pointer;
@@ -130,11 +177,13 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
+
 }
 
 
 .CNC {
-  background-color: #f06aa1;
+ background-color: rgb(255, 183, 220);
+  border: 4px outset #c40051;
   color: rgb(129, 9, 71);
   padding: 30px, 30px;
   font-size: 18px;
@@ -149,7 +198,7 @@
 
 
     .CNC:hover {
-        background-color:  #ec468b;
+        background-color:  rgb(255, 144, 201);
     }
     .Head {
         text-align:center;
@@ -175,7 +224,7 @@
     }
     .action-menu {
       position: absolute;
-      background: #fff0f6;
+      background: rgb(255, 183, 220);
       border: 2px solid #f06aa1;
       padding: 8px;
       border-radius: 10px;
@@ -196,7 +245,7 @@
       position: fixed;
       top: 30%;
       left: 40%;
-      background-color: #fff0f6;
+      background-color: rgb(255, 183, 220);
       border: 4px outset #d85194;
       padding: 20px;
       border-radius: 15px;
@@ -233,7 +282,7 @@
         actionMenu.style.top = `${e.pageY}px`;
       });
   
-      tableBody.appendChild(row); // ← THIS was missing
+      tableBody.appendChild(row); 
     });
   
     // Close menu when clicking anywhere else

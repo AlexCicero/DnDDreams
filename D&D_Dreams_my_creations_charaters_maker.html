@@ -57,22 +57,6 @@
     
     </div>
 
-
-    <!-- Save Button -->
-    <button class="save-button" id="BOCS" onclick="openSavePopup()">Save Character</button>
-
-
-    <div id="savePopup" style="display: none; position: fixed; z-index: 1000; background: rgba(0,0,0,0.8); top: 0; left: 0; width: 100%; height: 100%; justify-content: center; align-items: center;">
-        <div style="background: pink; padding: 30px; border-radius: 20px; text-align: center;">
-          <p>Are you sure you want to save this character?</p>
-          <button id="confirmSaveBtn">Yes, Save</button>
-          <button id="cancelSaveBtn">No</button>
-        </div>
-      </div>
-      
-  
-
-
    <!-- ------------------- Big boys ------------------- -->
 <div class="input-wrapper">
         <input type="text" id="character-name" class="input-group-CN">
@@ -113,7 +97,7 @@
         <label class="custom-placeholder-R" for="race">Race</label>
     </div>
     
-    <div class="input-wrapper">
+    <div class="input-wrapper" id="diamond1">
         <input type="text" id="background" class="input-group-B">
         <label class="custom-placeholder-B" for="background">Background</label>
     </div>
@@ -124,9 +108,11 @@
     </div>
 
     <div class="input-wrapper"></div>
-    <div class="input-wrapper"></div>
+    <div class="input-wrapper" id="diamond2"></div>
+
 <!-- ------------ Center ------------- -->
 
+<!-- ------------ Str  ------------- -->
 
     <input class="bottom-circle-S" id="BOCS">
     <input class="base-circle-S" id="BACS">
@@ -134,10 +120,37 @@
     <label class="custom-placeholder-BOCS" for="BOCS">Save</label>
     <label class="custom-placeholder-BACS" for="BACS">Strength</label>
 
+<!-- ------------ Dex ------------- -->
+
+    
+    <input class="bottom-circle-D" id="BOCD">
+    <input class="base-circle-D" id="BACD">
+    <input class="top-circle-D" >
+    <label class="custom-placeholder-BOCD" for="BOCD">Save</label>
+    <label class="custom-placeholder-BACD" for="BACD">Dexterity</label>
+
+<!-- Save Button -->
+<button class="save-button" id="BOCS" onclick="openSavePopup()">Save Character</button>
+
+
+<div id="savePopup" class="popup-overlay">
+    <div class="input-wrapper">   
+        <div class="popup">
+            <p>Are you sure you want to save this character?</p>
+                <button id="confirmSaveBtn" class="yes">Yes, Save</button>
+                <button id="cancelSaveBtn" class="no"> No</button>
+        </div>   
+    </div>
+</div>
+      
+  
+
 <style>
 
 
-/* Top-left Save Button */
+/* ------------ Save Buutton -------------*/
+
+
 .save-button {
 position: absolute;
 height: 60px;
@@ -145,7 +158,7 @@ width: 225px;
 border-radius: 10px;
 padding: 10px;
 border: 4px outset #d85194;
-background-color: #fff0f5;
+background-color: rgb(255, 183, 220);
 font-family: 'Cinzel Decorative', serif;
 font-weight: bold; /* or 700, or 900 for black */
 font-size: 20px;
@@ -159,45 +172,59 @@ top: 150px;
   background-color: #e0558f;
 }
 
-/* Popup Overlay */
-.popup-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
+
+/* ------------ Pop up -------------*/
+
+
+.popup{
+    position: fixed;
+    top: 30%;
+    left:32%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 7px outset #d85194;
+    background-color: #fff0f5;
+    clip-path: polygon(0 0,100% 0,100% calc(50% - var(--b)/2),calc(100% - var(--h)) 50%,100% calc(50% + var(--b)/2),100% 100%,0 100%,0 calc(50% + var(--b)/2),var(--h) 50%,0 calc(50% - var(--b)/2));
+    --h: 24px;
+    --b: 47px;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 20px;
+    font-size: 20px;
 }
 
-/* Popup Box */
-.popup-box {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  max-width: 400px;
-  width: 80%;
-  color: #8b0000;
-  font-size: 20px;
+
+
+.popup-overlay{
+
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    background:rgba(0,0,0,0.3); 
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%; 
+    justify-content:center; 
+    align-items: center;
 }
 
-.popup-buttons button {
+
+
+.yes, .no  {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  background-color: #f06aa1;
-  color: white;
+  background-color: #ffb1d2;
+  color: #490023
 }
 
-.popup-buttons button:hover {
-  background-color: #e0558f;
+.yes:hover,
+.no:hover {
+  background-color: #ff4e98;
 }
 
 
@@ -205,6 +232,9 @@ top: 150px;
 
 /* ------------ Center -------------*/
 
+
+
+/* ------------ Str -------------*/
 
 .base-circle-S,
 .bottom-circle-S,
@@ -218,7 +248,7 @@ top: 150px;
   width: 80px;
   height: 80px;
   top: 430px;
-  left: 360px;
+  left: 340px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   z-index: 1;
@@ -247,7 +277,71 @@ top: 150px;
   width: 70px;
   height: 70px;
   top: 535px;
-  left:315px;
+  left:312px;
+  background: #fff0f6;
+  border: 2px solid #f06aa1;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c2185b;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 20px;
+    font-size: 23px;
+}
+
+
+
+
+
+/* ------------ Dex -------------*/
+
+
+.base-circle-D,
+.bottom-circle-D,
+.top-circle-D {
+  position: fixed;
+  border-radius: 50%;
+}
+
+
+.bottom-circle-D {  
+  width: 80px;
+  height: 80px;
+  top: 460px;
+  left: 480px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+  font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 45px;
+    font-size: 20px;
+}
+
+
+.base-circle-D {   
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at center, #ffc1e3, #f06aa1);
+  z-index: 2;
+  top: 490px;
+  left: 440px;
+  font-family: 'Cinzel Decorative', serif;
+    font-weight: bold; /* or 700, or 900 for black */
+    padding-left: 30px;
+    padding-bottom: 20px;
+    font-size: 35px;
+}
+
+.top-circle-D {
+  width: 70px;
+  height: 70px;
+  top: 565px;
+  left:452px;
   background: #fff0f6;
   border: 2px solid #f06aa1;
   font-weight: bold;
@@ -437,11 +531,11 @@ input {
 
 }
 
-/* ------------------------------ Diamond indents for CN input ------------------------------ */
-.input-wrapper:nth-child(6)::before,
-.input-wrapper:nth-child(6)::after,
-.input-wrapper:nth-child(11)::before,
-.input-wrapper:nth-child(11)::after
+/* --------------------d---------- Diamond indents for CN input ------------------------------ */
+.input-wrapper:nth-child(1)::before,
+.input-wrapper:nth-child(1)::after,
+.input-wrapper:nth-child(2)::before,
+.input-wrapper:nth-child(2)::after
 {
     content: '';
     position: absolute;
@@ -455,17 +549,33 @@ input {
 }
 
 .input-wrapper:nth-child(3)::before,
-.input-wrapper:nth-child(3)::after, 
+.input-wrapper:nth-child(3)::after{
+
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 50px;
+    height: 50px;
+    z-index: 1001;
+    background-color: #ff69b4;
+    border: 4px outset #c94070;
+}
+
 .input-wrapper:nth-child(4)::before,
-.input-wrapper:nth-child(4)::after,
+.input-wrapper:nth-child(4)::after, 
 .input-wrapper:nth-child(5)::before,
 .input-wrapper:nth-child(5)::after,
+.input-wrapper:nth-child(6)::before,
+.input-wrapper:nth-child(6)::after,
 .input-wrapper:nth-child(7)::before,
 .input-wrapper:nth-child(7)::after, 
 .input-wrapper:nth-child(8)::before,
 .input-wrapper:nth-child(8)::after,
 .input-wrapper:nth-child(9)::before,
-.input-wrapper:nth-child(9)::after{
+.input-wrapper:nth-child(9)::after,
+.input-wrapper:nth-child(10)::before,
+.input-wrapper:nth-child(10)::after{
     content: '';
     position: absolute;
     top: 50%;
@@ -476,7 +586,10 @@ input {
 }
 
 
-.input-wrapper:nth-child(10)::before {
+.input-wrapper:nth-child(11)::before,
+.input-wrapper:nth-child(11)::after,
+.input-wrapper:nth-child(12)::before,
+.input-wrapper:nth-child(12)::after {
     content: '';
     position: fixed;
     width: 15px;
@@ -484,47 +597,88 @@ input {
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
     border: 2px outset #c94070;
+    background-color:  #ff88c3;; 
+    transition: background-color 0.3s ease;
+    cursor: pointer; 
+
 }
 
+/*-----------------------------*/
+
+.input-wrapper.active1:nth-child(11)::before,
+.input-wrapper.active1:nth-child(11)::after{   
+    background-color: #a10051; 
+    content: '';
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    border: 2px outset #7d003f;;
+    cursor: pointer; }
+
+.input-wrapper.active2:nth-child(12)::before,
+.input-wrapper.active2:nth-child(12)::after {
+    background-color: #a10051; 
+    content: '';
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    border: 2px outset #7d003f;;
+    cursor: pointer; 
+}
 
 /* ------------------- Center-------------------*/
 
 
 
-.input-wrapper:nth-child(10)::before {
-  background-color:  #ff88c3;; 
-  transition: background-color 0.3s ease;
-    left: 360px;  /* CN left */
-    top: 440px;  
+.input-wrapper:nth-child(11)::before,
+.input-wrapper.active1:nth-child(11)::before{
+    top: 440px;  /* 430 */
+    left: 350px; /* 340 */
 }
 
-.input-wrapper.active:nth-child(10)::before{
-  background-color: #ff3c9e; /* darker pink when clicked */
-  left: 270px;  /* CN left */
-  top: 380px;  
+.input-wrapper:nth-child(11)::after,
+.input-wrapper.active1:nth-child(11)::after{
+    top: 440px;  /* 430 */
+    left: 350px; /* 340 */
+}
+
+.input-wrapper:nth-child(12)::before,
+.input-wrapper.active2:nth-child(12)::before{
+    top: 440px;  /* 460 */
+    left: 350px; /* 480 */ 
+}
+
+.input-wrapper:nth-child(12)::after,
+.input-wrapper.active2:nth-child(12)::after{
+    top: 470px;  /* 460 */
+    left: 490px; /* 480 */ 
 }
 /* ------------------- Big boys -------------------*/
 
 
 
-.input-wrapper:nth-child(11)::before {
+.input-wrapper:nth-child(1)::before {
     left: 683px;  /* CN left */
     top: 100px;  
 }
 
-.input-wrapper:nth-child(11)::after {
+.input-wrapper:nth-child(1)::after {
     left: 1133px;  /* CN right*/
     top: 100px;   
 }
 
 
-.input-wrapper:nth-child(6)::before {
+.input-wrapper:nth-child(2)::before {
     left: 720px;  /* CN left */
     top: 229px;  
 
 }
 
-.input-wrapper:nth-child(6)::after {
+.input-wrapper:nth-child(2)::after {
     left: 1097px;  /* CN right*/
     top: 229px; 
 }
@@ -533,42 +687,40 @@ input {
 
 /*------------- left ------------- */
 
-
-.input-wrapper:nth-child(3)::before {
-    left: 323px;  /* CL Bottom left */
+.input-wrapper:nth-child(4)::before {
+    left: 343px;  /* CL Bottom left */
     top: 125px;  
     width: 10px;
     height: 10px;
 }
 
-.input-wrapper:nth-child(3)::after {
+.input-wrapper:nth-child(4)::after {
     left: 643px;  /* Cl top right */
     top: 80px;   
     width: 10px;
     height: 10px;
 }
-
-.input-wrapper:nth-child(4)::before {
+.input-wrapper:nth-child(5)::before {
     left: 343px;  /* SP Bottom left */
     top: 205px;  
     width: 10px;
     height: 10px;
 }
 
-.input-wrapper:nth-child(4)::after {
+.input-wrapper:nth-child(5)::after {
     left: 643px;  /* SP top right */
     top: 160px;   
     width: 10px;
     height: 10px;
 }
-.input-wrapper:nth-child(5)::before {
+.input-wrapper:nth-child(6)::before {
     left: 343px;  /* EP Bottom left */
     top: 285px;  
     width: 10px;
     height: 10px;
 }
 
-.input-wrapper:nth-child(5)::after {
+.input-wrapper:nth-child(6)::after {
     left: 643px;  /* EP top right */
     top: 240px;   
     width: 10px;
@@ -716,7 +868,7 @@ input {
 
 .custom-placeholder-BOCS {
     left: 390px;
-    top: 415px;
+    top: 420px;
     z-index: 10;
 }
 
@@ -785,6 +937,13 @@ input {
     function openSavePopup() {
       document.getElementById("savePopup").style.display = "flex";
     }
+
+    document.getElementById("diamond2").addEventListener("click", function() {
+    this.classList.toggle("active2");
+});
+document.getElementById("diamond1").addEventListener("click", function() {
+    this.classList.toggle("active1");
+});
   </script>
   
   
